@@ -9,7 +9,6 @@ export const dbFiles = () => {
   return files;
 };
 export const dbAllDataInFolder = async (
-  path: string,
   pathInstance: PlatformPath
 ): Promise<Array<Object> | Object> => {
   const listFolder = dbFiles();
@@ -30,10 +29,7 @@ export const dbAllDataInFolder = async (
   return result;
 };
 
-export const dbSearchFile = async (
-  fileName: string,
-  pathInstance: PlatformPath
-): Promise<Object> => {
+export const dbSearchFile = async (fileName: string): Promise<Object> => {
   if (!fileName.includes(".")) fileName = fileName.concat(".json");
   const listFolder = dbFindUrl(fileName);
   const files = fs.readFileSync(listFolder, {

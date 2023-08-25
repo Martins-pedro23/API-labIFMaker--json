@@ -1,9 +1,4 @@
-import {
-  dbAllDataInFolder,
-  dbFiles,
-  dbSearchFile,
-  dbUrl,
-} from "@/utils/dbUtil";
+import { dbAllDataInFolder, dbFiles, dbSearchFile, dbUrl } from "@ud";
 import {
   CourseEntity,
   ICourseRepository,
@@ -14,8 +9,8 @@ import path from "path";
 export class CourseRepository implements ICourseRepository {
   public async create(course: CourseEntity): Promise<CourseEntity[]> {
     try {
-      const teste = (await dbAllDataInFolder(dbUrl, path)) as CourseEntity[];
-      const outrosTeste = await dbSearchFile("courses", path);
+      const teste = (await dbAllDataInFolder(path)) as CourseEntity[];
+      const outrosTeste = await dbSearchFile("courses");
       console.log(outrosTeste);
       return teste;
     } catch (err) {
